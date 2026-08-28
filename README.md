@@ -1,3 +1,7 @@
-HO CHI MINH CITY UNIVERSITY OF TECHNOLOGY AND ENGINEERING\n
-Student Name: Phạm Thiên Phú\n
-Student ID: 25AD11002
+# 🎓 Ho Chi Minh City University of Technology and Engineering
+
+### 👤 Student Information
+* **Full Name:** Phạm Thiên Phú
+* **Student ID:** 25AD11002
+
+---
