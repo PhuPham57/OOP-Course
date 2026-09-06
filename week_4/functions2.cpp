@@ -6,16 +6,16 @@ string names[20];
 string ids[20];
 string phones[20]; 
 void inputStudent(){
-    std :: cout << "Input the number of students:" << std::endl;
-    std :: cin >> n; 
+    cout << "Input the number of students: ";
+    cin >> n; 
     if (n>0){
         for (int i = 0; i<n;i++){
             cout << "Enter information of student " << i + 1 << "\n";
-            cout << "Name: \n";
+            cout << "Name: ";
             getline(cin,names[i]);
-            cout << "ID: \n";
+            cout << "ID: ";
             getline(cin,ids[i]);
-            cout << "Phone : \n ";
+            cout << "Phone: ";
             getline(cin,phones[i]);
         }
         cout << "Number of inputted students: " << n;
@@ -29,9 +29,9 @@ void inputStudent(){
 void outputStudents(){
     for (int i = 0; i<n;i++){
         cout << "Student: " << i + 1 << "\n";
-        cout << "Name: \n" << names[i] << "\n";
-        cout << "ID: \n" << ids[i] << "\n";
-        cout << "Phone: \n" << phones[i] << "\n";
+        cout << "Name: " << names[i] << "\n";
+        cout << "ID: " << ids[i] << "\n";
+        cout << "Phone: " << phones[i] << "\n";
     }
 }
 int main()
