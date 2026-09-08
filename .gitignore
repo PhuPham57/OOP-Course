@@ -15,6 +15,7 @@ x64/
 x86/
 out/
 build/
+bin/
 
 # CMake generated files
 CMakeFiles/
