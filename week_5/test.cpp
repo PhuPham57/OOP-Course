@@ -120,5 +120,22 @@ int main()
         }
     }
 
+    double highest = -1.0;
+    double secondHighest = -1.0;
+    for (int i = 0; i < N; i++) {
+        if (scores[i] > highest) {
+            secondHighest = highest;
+            highest = scores[i];
+        } else if (scores[i] > secondHighest && scores[i] < highest) {
+            secondHighest = scores[i];
+        }
+    }
+    cout << "\n[Bai 4] Diem cao nhat: " << highest << "\n";
+    if (secondHighest != -1.0) {
+        cout << "[Bai 4] Diem cao thu hai: " << secondHighest << "\n";
+    } else {
+        cout << "[Bai 4] Khong co diem cao thu hai (tat ca diem bang nhau).\n";
+    }
+
     return 0;
 }
