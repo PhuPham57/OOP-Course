@@ -72,5 +72,21 @@ int main()
     cout << "\nDiem cao nhat : " << maxScore << "\n";
     cout << "Diem thap nhat: " << minScore << "\n";
 
+    cout << "\n===== XEP LOAI =====\n";
+    for (int i = 0; i < N; i++) {
+        cout << "Hoc sinh " << i + 1 << ": " << scores[i] << " -> ";
+        if (scores[i] >= 9.0) {
+            cout << "Xuat sac\n";
+        } else if (scores[i] >= 8.0) {
+            cout << "Gioi\n";
+        } else if (scores[i] >= 6.5) {
+            cout << "Kha\n";
+        } else if (scores[i] >= 5.0) {
+            cout << "Trung binh\n";
+        } else {
+            cout << "Yeu\n";
+        }
+    }
+
     return 0;
 }
