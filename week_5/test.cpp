@@ -192,5 +192,35 @@ int main()
     }
     cout << "\n[Bai 9] Chuoi dau lien tuc dai nhat: " << maxStreak << " hoc sinh\n";
 
+    cout << "\n[Bai 10] Phan bo diem so:\n";
+    int c1 = 0, c2 = 0, c3 = 0, c4 = 0, c5 = 0;
+    for (int i = 0; i < N; i++) {
+        if (scores[i] < 5.0) c1++;
+        else if (scores[i] < 6.5) c2++;
+        else if (scores[i] < 8.0) c3++;
+        else if (scores[i] < 9.0) c4++;
+        else c5++;
+    }
+
+    cout << "0   - <5  : ";
+    for (int i = 0; i < c1; i++) cout << "*";
+    cout << " " << c1 << "\n";
+
+    cout << "5   - <6.5: ";
+    for (int i = 0; i < c2; i++) cout << "*";
+    cout << " " << c2 << "\n";
+
+    cout << "6.5 - <8  : ";
+    for (int i = 0; i < c3; i++) cout << "*";
+    cout << " " << c3 << "\n";
+
+    cout << "8   - <9  : ";
+    for (int i = 0; i < c4; i++) cout << "*";
+    cout << " " << c4 << "\n";
+
+    cout << "9   - 10  : ";
+    for (int i = 0; i < c5; i++) cout << "*";
+    cout << " " << c5 << "\n";
+
     return 0;
 }
