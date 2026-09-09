@@ -150,5 +150,14 @@ int main()
     }
     if (!foundAny) cout << "  (Khong tim thay hoc sinh nao co diem nay)\n";
 
+    double freqVal;
+    cout << "\n[Bai 6] Nhap diem can dem tan suat: ";
+    cin >> freqVal;
+    int frequency = 0;
+    for (int i = 0; i < N; i++) {
+        if (scores[i] == freqVal) frequency++;
+    }
+    cout << "-> Diem " << freqVal << " xuat hien " << frequency << " lan.\n";
+
     return 0;
 }
