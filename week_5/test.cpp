@@ -137,5 +137,18 @@ int main()
         cout << "[Bai 4] Khong co diem cao thu hai (tat ca diem bang nhau).\n";
     }
 
+    double searchVal;
+    cout << "\n[Bai 5] Nhap diem can tim: ";
+    cin >> searchVal;
+    bool foundAny = false;
+    cout << "Tim thay tai:\n";
+    for (int i = 0; i < N; i++) {
+        if (scores[i] == searchVal) {
+            cout << "  + Hoc sinh " << i + 1 << "\n";
+            foundAny = true;
+        }
+    }
+    if (!foundAny) cout << "  (Khong tim thay hoc sinh nao co diem nay)\n";
+
     return 0;
 }
