@@ -88,6 +88,14 @@ int main()
         }
     }
     
+    cout << "\n       BAI TAP (1 -> 10)";
+    cout << "[Bai 1]:\n";
+    int excellentCount = 0;
+    for (int i = 0; i < N; i++) {
+        if (scores[i] >= 9.0) excellentCount++;
+    }
+    cout << "\nSo hoc sinh Xuat sac (>= 9.0): " << excellentCount << "\n";
+
     
     
     return 0;
