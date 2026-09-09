@@ -173,5 +173,12 @@ int main()
         cout << "-> Tat ca hoc sinh deu dau!\n";
     }
 
+    cout << "\n[Bai 8] So sanh hai hoc sinh ke tiep:\n";
+    for (int i = 0; i < N - 1; i++) {
+        if (scores[i + 1] > scores[i]) {
+            cout << "  + Hoc sinh " << i + 2 << " tien bo hon Hoc sinh " << i + 1 << "\n";
+        }
+    }
+
     return 0;
 }
