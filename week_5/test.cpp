@@ -108,5 +108,17 @@ int main()
     }
     cout << "-> So hoc sinh trong khoang [" << a << ", " << b << "]: " << rangeCount << "\n";
     
+    double totalSum = 0;
+    for (int i = 0; i < N; i++) totalSum += scores[i];
+    double avgScore = totalSum / N;
+
+    cout << "\n[Bai 3] Diem trung binh cua lop: " << avgScore << "\n";
+    cout << "Cac hoc sinh tren trung binh:\n";
+    for (int i = 0; i < N; i++) {
+        if (scores[i] > avgScore) {
+            cout << "  + Hoc sinh " << i + 1 << ": " << scores[i] << "\n";
+        }
+    }
+
     return 0;
 }
