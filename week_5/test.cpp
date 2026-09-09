@@ -96,7 +96,17 @@ int main()
     }
     cout << "\nSo hoc sinh Xuat sac (>= 9.0): " << excellentCount << "\n";
 
-    
+    cout << "[Bai 2]:\n";
+    double a, b;
+    cout << "\nNhap diem toi thieu (a): ";
+    cin >> a;
+    cout << "Nhap diem toi da (b): ";
+    cin >> b;
+    int rangeCount = 0;
+    for (int i = 0; i < N; i++) {
+        if (scores[i] >= a && scores[i] <= b) rangeCount++;
+    }
+    cout << "-> So hoc sinh trong khoang [" << a << ", " << b << "]: " << rangeCount << "\n";
     
     return 0;
 }
