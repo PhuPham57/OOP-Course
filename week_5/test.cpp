@@ -159,5 +159,19 @@ int main()
     }
     cout << "-> Diem " << freqVal << " xuat hien " << frequency << " lan.\n";
 
+    cout << "\n[Bai 7] Tìm hoc sinh rot dau tien:\n";
+    int firstFailIdx = -1;
+    for (int i = 0; i < N; i++) {
+        if (scores[i] < 5.0) {
+            firstFailIdx = i;
+            break;
+        }
+    }
+    if (firstFailIdx != -1) {
+        cout << "-> Hoc sinh rot dau tien: Hoc sinh " << firstFailIdx + 1 << " (" << scores[firstFailIdx] << " diem)\n";
+    } else {
+        cout << "-> Tat ca hoc sinh deu dau!\n";
+    }
+
     return 0;
 }
