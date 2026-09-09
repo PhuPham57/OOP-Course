@@ -61,5 +61,16 @@ int main()
     cout << "So hoc sinh Rot : " << failedCount << "\n";
     cout << "Ty le dau      : " << passRate << "%\n";
 
+    double maxScore = scores[0];
+    double minScore = scores[0];
+
+    for (int i = 1; i < N; i++) {
+        if (scores[i] > maxScore) maxScore = scores[i];
+        if (scores[i] < minScore) minScore = scores[i];
+    }
+
+    cout << "\nDiem cao nhat : " << maxScore << "\n";
+    cout << "Diem thap nhat: " << minScore << "\n";
+
     return 0;
 }
