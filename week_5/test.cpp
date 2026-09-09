@@ -180,5 +180,17 @@ int main()
         }
     }
 
+    int maxStreak = 0;
+    int currentStreak = 0;
+    for (int i = 0; i < N; i++) {
+        if (scores[i] >= 5.0) {
+            currentStreak++;
+            if (currentStreak > maxStreak) maxStreak = currentStreak;
+        } else {
+            currentStreak = 0;
+        }
+    }
+    cout << "\n[Bai 9] Chuoi dau lien tuc dai nhat: " << maxStreak << " hoc sinh\n";
+
     return 0;
 }
