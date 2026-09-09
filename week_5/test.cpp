@@ -43,5 +43,23 @@ int main()
         }
     }
 
+    int passedCount = 0;
+    int failedCount = 0;
+
+    for (int i = 0; i < N; i++) {
+        if (scores[i] >= 5.0) {
+            passedCount++;
+        } else {
+            failedCount++;
+        }
+    }
+
+    double passRate = ((double)passedCount / N) * 100;
+
+    cout << "\n===== THONG KE =====\n";
+    cout << "So hoc sinh Dau : " << passedCount << "\n";
+    cout << "So hoc sinh Rot : " << failedCount << "\n";
+    cout << "Ty le dau      : " << passRate << "%\n";
+
     return 0;
 }
