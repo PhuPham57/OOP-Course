@@ -45,6 +45,23 @@ void inputArray(FLOWER List[], int &n)
     }
 }
 
+//Bai 2
+void displayArray(const FLOWER List[], int n)
+{
+    cout << "\n===== FLOWER SHOP =====\n\n";
+    cout << "No  Name        Price     Qty   Type\n";
+    cout << "-------------------------------------\n";
+
+    for (int i = 0; i < n; i++)
+    {
+        cout << i + 1 << "   " 
+             << List[i].name << "\t\t" 
+             << List[i].price << "\t  " 
+             << List[i].quantity << "    " 
+             << List[i].type << "\n";
+    }
+}
+
 int main()
 {
     FLOWER List[MAX];
