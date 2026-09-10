@@ -137,8 +137,42 @@ void searchByName(const FLOWER List[], int n)
     }
 }
 
+void generateReport(const FLOWER List[], int n)
+{
+    if (n == 0) return;
+
+    int totalQty = 0;
+    double sumPrice = 0;
+
+    for (int i = 0; i < n; i++)
+    {
+        totalQty += List[i].quantity;
+        sumPrice += List[i].price;
+    }
+
+    cout << "\n---- ANALYSIS ----\n";
+    findMinMaxPrice(List, n); // Tận dụng lại bài 3
+    cout << "Total quantity        : " << totalQty << "\n";
+    cout << "Average price         : " << sumPrice / n << "\n";
+}
+
 int main()
 {
     FLOWER List[MAX];
     int n;
+
+    inputArray(List, n);
+
+    displayArray(List, n);
+
+    findMinMaxPrice(List, n);
+
+    countByType(List, n);
+
+    searchByName(List, n);
+
+    generateReport(List, n);
+    countByType(List, n);
+
+    return 0;
 }
