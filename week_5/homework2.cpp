@@ -198,6 +198,16 @@ void countFlowersInPriceRange(const Flower flowers[], int n) {
     cout << "Flowers in range [" << minP << ", " << maxP << "]: " << count << "\n";
 }
 
+//Bai 13
+void calculateTotalInventoryValue(const Flower flowers[], int n) {
+    cout << "\n--- Total shop inventory value ---\n";
+    double totalVal = 0;
+    for (int i = 0; i < n; i++) {
+        totalVal += flowers[i].price * flowers[i].quantity;
+    }
+    cout << "Total value of all flowers: " << totalVal << "\n";
+}
+
 int main() {
     Flower flowers[MAX];
     int n = 0;
@@ -239,6 +249,9 @@ int main() {
 
     //12
     countFlowersInPriceRange(flowers, n);
+
+    //13
+    calculateTotalInventoryValue(flowers, n);
 
     return 0;
 }
