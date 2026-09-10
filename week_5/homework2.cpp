@@ -282,6 +282,23 @@ void findTop3MostExpensiveFlowers(Flower flowers[], int n) {
     }
 }
 
+//Bai 18
+void searchFlowersByKeyword(const Flower flowers[], int n) {
+    cout << "\n--- Search flowers by keyword ---\n";
+    string keyword;
+    cout << "Enter keyword to search: ";
+    cin >> keyword;
+
+    bool found = false;
+    for (int i = 0; i < n; i++) {
+        if (flowers[i].name.find(keyword) != string::npos) {
+            cout << "- " << flowers[i].name << " (Price: " << flowers[i].price << ")\n";
+            found = true;
+        }
+    }
+    if (!found) cout << "No flowers match the keyword: " << keyword << "\n";
+}
+
 int main() {
     Flower flowers[MAX];
     int n = 0;
@@ -338,6 +355,9 @@ int main() {
 
     //17
     findTop3MostExpensiveFlowers(flowers, n);
-    
+
+    //18
+    searchFlowersByKeyword(flowers, n);
+
     return 0;
 }
