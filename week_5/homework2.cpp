@@ -118,7 +118,22 @@ void countFlowersByType(const Flower flowers[], int n) {
     }
 }
 
-
+//Bai 8
+void findFlowersByGivenType(const Flower flowers[], int n) {
+    cout << "\n--- Find all flowers of a given type ---\n";
+    string targetType;
+    cout << "Enter type to search: ";
+    cin >> targetType;
+    
+    bool found = false;
+    for (int i = 0; i < n; i++) {
+        if (flowers[i].type == targetType) {
+            cout << "- " << flowers[i].name << " (Price: " << flowers[i].price << ", Qty: " << flowers[i].quantity << ")\n";
+            found = true;
+        }
+    }
+    if (!found) cout << "No flowers found for type: " << targetType << "\n";
+}
 
 int main() {
     Flower flowers[MAX];
@@ -146,6 +161,9 @@ int main() {
 
     //7
     countFlowersByType(flowers, n);
+
+    //8
+    findFlowersByGivenType(flowers, n);
 
     return 0;
 }
