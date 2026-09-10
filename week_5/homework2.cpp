@@ -81,6 +81,14 @@ void findFlowerWithLargestQuantity(const Flower flowers[], int n) {
     cout << "Largest quantity: " << flowers[maxIdx].name << " (" << flowers[maxIdx].quantity << ")\n";
 }
 
+//Bai 5
+void calculateTotalQuantity(const Flower flowers[], int n) {
+    cout << "\n--- Total quantity ---\n";
+    int total = 0;
+    for (int i = 0; i < n; i++) total += flowers[i].quantity;
+    cout << "Total quantity of all flowers: " << total << "\n";
+}
+
 int main() {
     Flower flowers[MAX];
     int n = 0;
@@ -98,6 +106,10 @@ int main() {
 
     //4
     void findFlowerWithLargestQuantity(const Flower flowers[], int n);
+
+
+    //5
+    void calculateTotalQuantity(const Flower flowers[], int n);
     
     return 0;
 }
