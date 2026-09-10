@@ -62,6 +62,23 @@ void displayArray(const FLOWER List[], int n)
     }
 }
 
+//Bai 3
+void findMinMaxPrice(const FLOWER List[], int n)
+{
+    if (n == 0) return;
+
+    int maxIdx = 0, minIdx = 0;
+
+    for (int i = 1; i < n; i++)
+    {
+        if (List[i].price > List[maxIdx].price) maxIdx = i;
+        if (List[i].price < List[minIdx].price) minIdx = i;
+    }
+
+    cout << "Most expensive flower : " << List[maxIdx].name << " (" << List[maxIdx].price << ")\n";
+    cout << "Cheapest flower       : " << List[minIdx].name << " (" << List[minIdx].price << ")\n";
+}
+
 int main()
 {
     FLOWER List[MAX];
