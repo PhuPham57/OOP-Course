@@ -299,6 +299,31 @@ void searchFlowersByKeyword(const Flower flowers[], int n) {
     if (!found) cout << "No flowers match the keyword: " << keyword << "\n";
 }
 
+//Bai 19
+void calculateAverageQuantityByType(const Flower flowers[], int n) {
+    cout << "\n--- Average quantity by type ---\n";
+    for (int i = 0; i < n; i++) {
+        bool counted = false;
+        for (int j = 0; j < i; j++) {
+            if (flowers[i].type == flowers[j].type) {
+                counted = true;
+                break;
+            }
+        }
+        if (!counted) {
+            int totalQty = 0;
+            int count = 0;
+            for (int k = 0; k < n; k++) {
+                if (flowers[k].type == flowers[i].type) {
+                    totalQty += flowers[k].quantity;
+                    count++;
+                }
+            }
+            cout << flowers[i].type << ": " << (double)totalQty / count << "\n";
+        }
+    }
+}
+
 int main() {
     Flower flowers[MAX];
     int n = 0;
@@ -359,5 +384,8 @@ int main() {
     //18
     searchFlowersByKeyword(flowers, n);
 
+    //19
+    calculateAverageQuantityByType(flowers, n);
+    
     return 0;
 }
