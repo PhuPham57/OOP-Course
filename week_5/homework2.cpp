@@ -324,6 +324,24 @@ void calculateAverageQuantityByType(const Flower flowers[], int n) {
     }
 }
 
+//Bai 20
+void generateSimpleReport(const Flower flowers[], int n) {
+    cout << "\n--- Simple Report ---\n";
+    int totalQty = 0;
+    double sumPrice = 0;
+
+    for (int i = 0; i < n; i++) {
+        totalQty += flowers[i].quantity;
+        sumPrice += flowers[i].price;
+    }
+
+    cout << "Total number of flowers (types): " << n << "\n";
+    cout << "Total quantity                 : " << totalQty << "\n";
+    cout << "Average price                  : " << sumPrice / n << "\n";
+    cout << "\nNumber of flowers in each type:\n";
+    countFlowersByType(flowers, n);
+}
+
 int main() {
     Flower flowers[MAX];
     int n = 0;
@@ -386,6 +404,9 @@ int main() {
 
     //19
     calculateAverageQuantityByType(flowers, n);
+
+    //20
+    generateSimpleReport(flowers, n);
     
     return 0;
 }
