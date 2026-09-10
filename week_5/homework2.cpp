@@ -89,6 +89,14 @@ void calculateTotalQuantity(const Flower flowers[], int n) {
     cout << "Total quantity of all flowers: " << total << "\n";
 }
 
+//Bai 6
+void calculateAveragePrice(const Flower flowers[], int n) {
+    cout << "\n--- Average price ---\n";
+    double sum = 0;
+    for (int i = 0; i < n; i++) sum += flowers[i].price;
+    cout << "Average price: " << sum / n << "\n";
+}
+
 int main() {
     Flower flowers[MAX];
     int n = 0;
@@ -96,20 +104,22 @@ int main() {
     inputFlowers(flowers, n);
 
     //1
-    void displayAllFlowers(const Flower flowers[], int n);
+    displayAllFlowers(flowers, n);
 
     //2
-    void findMostExpensiveFlower(const Flower flowers[], int n);
+    findMostExpensiveFlower(flowers, n);
 
     //3
-    void findCheapestFlower(const Flower flowers[], int n);
+    findCheapestFlower(flowers, n);
 
     //4
-    void findFlowerWithLargestQuantity(const Flower flowers[], int n);
-
+    findFlowerWithLargestQuantity(flowers, n);
 
     //5
-    void calculateTotalQuantity(const Flower flowers[], int n);
-    
+    calculateTotalQuantity(flowers, n);
+
+    //6
+    calculateAveragePrice(flowers, n);
+
     return 0;
 }
