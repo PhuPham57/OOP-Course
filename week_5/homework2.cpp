@@ -208,6 +208,22 @@ void calculateTotalInventoryValue(const Flower flowers[], int n) {
     cout << "Total value of all flowers: " << totalVal << "\n";
 }
 
+//Bai 14
+void findMostValuableFlower(const Flower flowers[], int n) {
+    cout << "\n--- Most valuable flower ---\n";
+    int maxIdx = 0;
+    double maxVal = flowers[0].price * flowers[0].quantity;
+
+    for (int i = 1; i < n; i++) {
+        double currentVal = flowers[i].price * flowers[i].quantity;
+        if (currentVal > maxVal) {
+            maxVal = currentVal;
+            maxIdx = i;
+        }
+    }
+    cout << "Most valuable flower: " << flowers[maxIdx].name << " (Total Value: " << maxVal << ")\n";
+}
+
 int main() {
     Flower flowers[MAX];
     int n = 0;
@@ -253,5 +269,9 @@ int main() {
     //13
     calculateTotalInventoryValue(flowers, n);
 
+
+    //14
+    findMostValuableFlower(flowers, n);
+    
     return 0;
 }
