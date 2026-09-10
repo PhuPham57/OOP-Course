@@ -79,6 +79,37 @@ void findMinMaxPrice(const FLOWER List[], int n)
     cout << "Cheapest flower       : " << List[minIdx].name << " (" << List[minIdx].price << ")\n";
 }
 
+//Bai 4
+void countByType(const FLOWER List[], int n)
+{
+    cout << "\n---- COUNT BY TYPE ----\n";
+    for (int i = 0; i < n; i++)
+    {
+        bool alreadyCounted = false;
+        for (int j = 0; j < i; j++)
+        {
+            if (List[i].type == List[j].type)
+            {
+                alreadyCounted = true;
+                break;
+            }
+        }
+
+        if (!alreadyCounted)
+        {
+            int count = 0;
+            for (int k = 0; k < n; k++)
+            {
+                if (List[k].type == List[i].type)
+                {
+                    count++;
+                }
+            }
+            cout << List[i].type << "\t: " << count << "\n";
+        }
+    }
+}
+
 int main()
 {
     FLOWER List[MAX];
