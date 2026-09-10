@@ -170,6 +170,18 @@ void checkIfFlowerExists(const Flower flowers[], int n) {
     cout << "Exists: " << (exists ? "Yes" : "No") << "\n";
 }
 
+
+//Bai 11
+void countFlowersWithLowQuantity(const Flower flowers[], int n)
+{
+    cout << "\n--- Count flowers with low quantity (< 5) ---\n";
+    int count = 0;
+    for (int i = 0; i < n; i++) {
+        if (flowers[i].quantity < 5) count++;
+    }
+    cout << "Number of flowers with quantity < 5: " << count << "\n";
+}
+
 int main() {
     Flower flowers[MAX];
     int n = 0;
@@ -205,6 +217,9 @@ int main() {
 
     //10
     checkIfFlowerExists(flowers, n);
+
+    //11
+    countFlowersWithLowQuantity(flowers, n);
 
     return 0;
 }
