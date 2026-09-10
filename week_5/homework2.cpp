@@ -260,6 +260,28 @@ void sortFlowersByNameAZ(Flower flowers[], int n) {
     displayAllFlowers(tempArr, n);
 }
 
+//Bai 17
+void findTop3MostExpensiveFlowers(Flower flowers[], int n) {
+    cout << "\n--- Top 3 most expensive flowers ---\n";
+    Flower tempArr[MAX];
+    for (int i = 0; i < n; i++) tempArr[i] = flowers[i];
+
+    for (int i = 0; i < n - 1; i++) {
+        for (int j = i + 1; j < n; j++) {
+            if (tempArr[i].price < tempArr[j].price) {
+                Flower temp = tempArr[i];
+                tempArr[i] = tempArr[j];
+                tempArr[j] = temp;
+            }
+        }
+    }
+
+    int limit = (n < 3) ? n : 3;
+    for (int i = 0; i < limit; i++) {
+        cout << i + 1 << ". " << tempArr[i].name << " - Price: " << tempArr[i].price << "\n";
+    }
+}
+
 int main() {
     Flower flowers[MAX];
     int n = 0;
@@ -314,5 +336,8 @@ int main() {
     //16
     sortFlowersByNameAZ(flowers, n);
 
+    //17
+    findTop3MostExpensiveFlowers(flowers, n);
+    
     return 0;
 }
