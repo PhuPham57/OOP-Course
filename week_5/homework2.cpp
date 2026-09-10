@@ -242,6 +242,24 @@ void sortFlowersByPriceAscending(Flower flowers[], int n) {
     displayAllFlowers(tempArr, n);
 }
 
+//Bai 16
+void sortFlowersByNameAZ(Flower flowers[], int n) {
+    cout << "\n--- Sort by name (A -> Z) ---\n";
+    Flower tempArr[MAX];
+    for (int i = 0; i < n; i++) tempArr[i] = flowers[i];
+
+    for (int i = 0; i < n - 1; i++) {
+        for (int j = i + 1; j < n; j++) {
+            if (tempArr[i].name > tempArr[j].name) {
+                Flower temp = tempArr[i];
+                tempArr[i] = tempArr[j];
+                tempArr[j] = temp;
+            }
+        }
+    }
+    displayAllFlowers(tempArr, n);
+}
+
 int main() {
     Flower flowers[MAX];
     int n = 0;
@@ -292,6 +310,9 @@ int main() {
 
     //15
     sortFlowersByPriceAscending(flowers, n);
+
+    //16
+    sortFlowersByNameAZ(flowers, n);
 
     return 0;
 }
