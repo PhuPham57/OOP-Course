@@ -152,6 +152,24 @@ void searchFlowerByName(const Flower flowers[], int n) {
     }
     if (!found) cout << "Flower not found!\n";
 }
+
+//Bai 10
+void checkIfFlowerExists(const Flower flowers[], int n) {
+    cout << "\n--- Check if flower exists ---\n";
+    string targetName;
+    cout << "Enter flower name to check: ";
+    cin >> targetName;
+
+    bool exists = false;
+    for (int i = 0; i < n; i++) {
+        if (flowers[i].name == targetName) {
+            exists = true;
+            break;
+        }
+    }
+    cout << "Exists: " << (exists ? "Yes" : "No") << "\n";
+}
+
 int main() {
     Flower flowers[MAX];
     int n = 0;
@@ -186,6 +204,7 @@ int main() {
     searchFlowerByName(flowers, n);
 
     //10
-    
+    checkIfFlowerExists(flowers, n);
+
     return 0;
 }
