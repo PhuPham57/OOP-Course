@@ -97,6 +97,29 @@ void calculateAveragePrice(const Flower flowers[], int n) {
     cout << "Average price: " << sum / n << "\n";
 }
 
+//Bai 7
+void countFlowersByType(const Flower flowers[], int n) {
+    cout << "\n--- Count flowers by type ---\n";
+    for (int i = 0; i < n; i++) {
+        bool counted = false;
+        for (int j = 0; j < i; j++) {
+            if (flowers[i].type == flowers[j].type) {
+                counted = true;
+                break;
+            }
+        }
+        if (!counted) {
+            int count = 0;
+            for (int k = 0; k < n; k++) {
+                if (flowers[k].type == flowers[i].type) count++;
+            }
+            cout << flowers[i].type << ": " << count << "\n";
+        }
+    }
+}
+
+
+
 int main() {
     Flower flowers[MAX];
     int n = 0;
@@ -120,6 +143,9 @@ int main() {
 
     //6
     calculateAveragePrice(flowers, n);
+
+    //7
+    countFlowersByType(flowers, n);
 
     return 0;
 }
