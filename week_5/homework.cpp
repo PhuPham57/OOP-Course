@@ -110,6 +110,33 @@ void countByType(const FLOWER List[], int n)
     }
 }
 
+//Bai 5
+void searchByName(const FLOWER List[], int n)
+{
+    string searchName;
+    cout << "\nEnter flower name to search: ";
+    cin >> searchName;
+
+    bool found = false;
+    for (int i = 0; i < n; i++)
+    {
+        if (List[i].name == searchName)
+        {
+            cout << "\nFound!\n";
+            cout << "Price: " << List[i].price << "\n";
+            cout << "Quantity: " << List[i].quantity << "\n";
+            cout << "Type: " << List[i].type << "\n";
+            found = true;
+            break;
+        }
+    }
+
+    if (!found)
+    {
+        cout << "\nNot found!\n";
+    }
+}
+
 int main()
 {
     FLOWER List[MAX];
