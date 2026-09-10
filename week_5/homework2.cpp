@@ -182,6 +182,22 @@ void countFlowersWithLowQuantity(const Flower flowers[], int n)
     cout << "Number of flowers with quantity < 5: " << count << "\n";
 }
 
+//Bai 12
+void countFlowersInPriceRange(const Flower flowers[], int n) {
+    cout << "\n--- Count flowers in price range ---\n";
+    double minP, maxP;
+    cout << "Enter minimum price: ";
+    cin >> minP;
+    cout << "Enter maximum price: ";
+    cin >> maxP;
+
+    int count = 0;
+    for (int i = 0; i < n; i++) {
+        if (flowers[i].price >= minP && flowers[i].price <= maxP) count++;
+    }
+    cout << "Flowers in range [" << minP << ", " << maxP << "]: " << count << "\n";
+}
+
 int main() {
     Flower flowers[MAX];
     int n = 0;
@@ -220,6 +236,9 @@ int main() {
 
     //11
     countFlowersWithLowQuantity(flowers, n);
+
+    //12
+    countFlowersInPriceRange(flowers, n);
 
     return 0;
 }
