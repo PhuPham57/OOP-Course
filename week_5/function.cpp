@@ -13,8 +13,14 @@ void showStudentID(int studentID) {
     cout << "Student ID: " << studentID << endl;
 }
 
+void showScore(string name, double score) {
+    cout << "Student: " << name << endl;
+    cout << "Score  : " << score << endl;
+    cout << "Keep going!" << endl;
+}
+
 int main() {
-    // Call the function
+
     showMenu();
     
     cout << endl;
@@ -24,8 +30,19 @@ int main() {
     cout << "Enter your student ID: ";
     cin >> studentID;
     
-    // Call the function
     showStudentID(studentID);
+
+    string studentName;
+    double studentScore;
     
+    cout << "Enter student name: ";
+    getline(cin, studentName);
+    
+    cout << "Enter score: ";
+    cin >> studentScore;
+    
+    // Call the function passing 2 arguments
+    showScore(studentName, studentScore)
+
     return 0;
 }
