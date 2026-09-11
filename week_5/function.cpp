@@ -19,6 +19,14 @@ void showScore(string name, double score) {
     cout << "Keep going!" << endl;
 }
 
+int maxValue(int a, int b) {
+    if (a > b) {
+        return a;
+    } else {
+        return b;
+    }
+}
+
 int main() {
 
     showMenu();
@@ -41,8 +49,19 @@ int main() {
     cout << "Enter score: ";
     cin >> studentScore;
     
-    // Call the function passing 2 arguments
-    showScore(studentName, studentScore)
+    showScore(studentName, studentScore);
+
+    int num1, num2;
+    
+    cout << "Enter first integer: ";
+    cin >> num1;
+    
+    cout << "Enter second integer: ";
+    cin >> num2;
+    
+    int largest = maxValue(num1, num2);
+    
+    cout << "The larger value is: " << largest << endl;
 
     return 0;
 }
