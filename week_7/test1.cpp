@@ -93,7 +93,7 @@ struct Lab
     void getComputerInfo(string id)
     {
         Computer c = getComputerInf(id);
-        if(c.id == "")
+        if(c.id != "")
         {
         cout << "Thong tin may:\n ";
         cout << "ID: " << c.id << endl;
