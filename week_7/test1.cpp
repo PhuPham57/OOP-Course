@@ -44,6 +44,7 @@ struct Lab
             cout << "May tinh so " << i + 1 << ":\n";
             
             cout << "Nhap ID: ";
+            cin.ignore();
             getline(cin, danhSachMay[i].id);
 
             cout << "Nhap ten may: ";
@@ -55,6 +56,7 @@ struct Lab
             cout << "\nThong tin USER:\n";
 
             cout << "Nhap username: ";
+            cin.ignore();
             getline(cin, danhSachMay[i].user.username);
 
             cout << "Nhap password: ";
@@ -75,16 +77,31 @@ struct Lab
         cout << "So luong may: " << getComputerCount() << endl;
     }
 
-    Computer getComputerInf(string id)
+    Computer getComputerInf(string id_)
     {
         for (int i = 0; i < soLuong; i++)
         {
-            if(danhSachMay[i].id == id)
+            if(danhSachMay[i].id == id_)
             {
                 return danhSachMay[i];
             }
         }
-        cout << "Khong tim thay may co ID " << id;
+        cout << "Khong tim thay may co ID " << id_ << endl;
+        return Computer();
+    }
+
+    void getComputerInfo(string id)
+    {
+        Computer c = getComputerInf(id);
+        if(c.id == "")
+        {
+        cout << "Thong tin may:\n ";
+        cout << "ID: " << c.id << endl;
+        cout << "Ten may: " << c.tenMay << endl;
+        cout << "OS: " << c.hdh << endl;
+        cout << "Model: " << c.model << endl;
+        cout << "Year: " << c.year << endl;
+        }
     }
 
     User getUserInfo(string id)
@@ -97,6 +114,7 @@ struct Lab
             }
         }
         cout << "Khong tim thay may co ID " << id;
+        return User();
     }
 };
 
@@ -108,6 +126,10 @@ int main()
     phong.inputLab();
 
     phong.showLabInfo();
+
+    phong.getComputerInfo("1");
+
+    phong.getUserInfo("1");
 
     return 0;
 }
