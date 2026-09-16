@@ -19,6 +19,31 @@ struct Computer
     User user;
     string model;
     int year;
+
+    void inputComputer()
+    {
+        cout << "Nhap ID: ";
+        cin.ignore();
+        getline(cin, id);
+
+        cout << "Nhap ten may: ";
+        getline(cin, tenMay);
+
+        cout << "Nhap he dieu hanh: ";
+        getline(cin, hdh);
+
+        cout << "Nhap nam san xuat: ";
+        cin >> year;
+
+        cout << "\nThong tin USER:\n";
+
+        cout << "Nhap username: ";
+        cin.ignore();
+        getline(cin, user.username);
+
+        cout << "Nhap password: ";
+        getline(cin, user.pwd);
+    }
 };
 
 struct Lab
@@ -30,7 +55,6 @@ struct Lab
 
     void inputLab()
     {
-
         cout << "Nhap ma phong: ";
         getline(cin, maPhong);
         cout << "Nhap chuc nang: ";
@@ -42,26 +66,7 @@ struct Lab
         for (int i = 0; i < soLuong; i++)
         {
             cout << "May tinh so " << i + 1 << ":\n";
-            
-            cout << "Nhap ID: ";
-            cin.ignore();
-            getline(cin, danhSachMay[i].id);
-
-            cout << "Nhap ten may: ";
-            getline(cin, danhSachMay[i].tenMay);
-
-            cout << "Nhap he dieu hanh: ";
-            getline(cin, danhSachMay[i].hdh);
-
-            cout << "\nThong tin USER:\n";
-
-            cout << "Nhap username: ";
-            cin.ignore();
-            getline(cin, danhSachMay[i].user.username);
-
-            cout << "Nhap password: ";
-            getline(cin, danhSachMay[i].user.pwd);
-            
+            danhSachMay[i].inputComputer();   
         }
     }
 
@@ -70,7 +75,8 @@ struct Lab
         return soLuong;
     }
 
-    void showLabInfo() {
+    void showLabInfo()
+    {
         cout << "\nThong tin phong:\n";
         cout << "Ma Phong: " << maPhong << endl;
         cout << "Chuc Nang: " << chucNang << endl;
@@ -104,18 +110,6 @@ struct Lab
         }
     }
 
-    User getUserInfo(string id)
-    {
-        for (int i = 0; i < soLuong; i++)
-        {
-            if(danhSachMay[i].id == id)
-            {
-                return danhSachMay[i].user;
-            }
-        }
-        cout << "Khong tim thay may co ID " << id;
-        return User();
-    }
 };
 
 int main()
