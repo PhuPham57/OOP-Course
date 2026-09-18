@@ -19,5 +19,12 @@ int main() {
     cout << "Hometown   : " << hometown << endl;
     cout << "===========================\n";
 
+    string name;
+    getline(cin, name);
+
+    // Kết hợp chuỗi bằng toán tử +
+    string message = "Hello, " + name + "!\nWelcome to C++ programming!";
+    cout << message << endl;
+
     return 0;
 }
