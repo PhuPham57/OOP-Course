@@ -30,4 +30,9 @@ int main() {
     string s = "Hello";
     s.append(" C++");
     cout << s << endl;
+
+    string s = "Hello World";
+    s.insert(5, ", C++"); // after Hello
+
+    cout << s << endl;
 }
