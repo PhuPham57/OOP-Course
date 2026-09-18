@@ -37,4 +37,12 @@ int main()
     string text = "Hello C++ World";
     string part = text.substr(6, 3);
     cout << part << endl;
+
+    string s1 = "apple";
+    string s2 = "apple";
+    if (s1.compare(s2) == 0) {
+        cout << "The strings are equal." << endl;
+    } else {
+        cout << "The strings are different." << endl;
+    }
 }
