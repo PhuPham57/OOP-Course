@@ -35,4 +35,8 @@ int main() {
     s.insert(5, ", C++"); // after Hello
 
     cout << s << endl;
+
+    string s = "Hello World";
+    s.erase(5, 6); // remove " World"
+    cout << s << endl;
 }
