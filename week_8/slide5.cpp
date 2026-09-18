@@ -21,4 +21,8 @@ int main()
 
     string s = "Hello C++";
     cout << "Length: " << s.length() << endl;
+
+    string s = "Hello";
+    cout << "First character: " << s[0] << endl;
+    cout << "Third character: " << s[2] << endl;
 }
