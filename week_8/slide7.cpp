@@ -58,25 +58,19 @@ int main() {
             username += tolower(c);
         }
     }
-    
-    // Nốstring fullName;
-        int birthYear;
         
-        getline(cin, fullName);
-        cin >> birthYear;
-    
-        // Xử lý họ tên: bỏ khoảng trắng và đổi thành chữ thường
-        string username = "";
-        for (char c : fullName) {
-            if (c != ' ') {
-                username += tolower(c);
-            }
+    getline(cin, fullName);
+    cin >> birthYear;
+    for (char c : fullName) {
+        if (c != ' ') {
+            username += tolower(c);
         }
-        
-        // Nối thêm năm sinh bằng to_string()
-        username += to_string(birthYear);
+    }
     
-        cout << "Username: " << username << endl;i thêm năm sinh bằng to_string()
+    // Nối thêm năm sinh bằng to_string()
+    username += to_string(birthYear);
+
+    cout << "Username: " << username << endl;
     username += to_string(birthYear);
 
     cout << "Username: " << username << endl;
