@@ -13,4 +13,9 @@ int main()
     cout << "Enter your name: ";
     getline(cin, name);
     cout << "Hello, " << name << "!" << endl;
+
+    string first = "Hello";
+    string second = "World";
+    string message = first + " " + second + "!";
+    cout << message << endl;
 }
