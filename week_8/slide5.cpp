@@ -18,4 +18,7 @@ int main()
     string second = "World";
     string message = first + " " + second + "!";
     cout << message << endl;
+
+    string s = "Hello C++";
+    cout << "Length: " << s.length() << endl;
 }
