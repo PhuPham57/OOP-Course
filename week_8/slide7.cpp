@@ -22,9 +22,21 @@ int main() {
     string name;
     getline(cin, name);
 
-    // Kết hợp chuỗi bằng toán tử +
     string message = "Hello, " + name + "!\nWelcome to C++ programming!";
     cout << message << endl;
+
+    cout << "Initials: ";
+    if (!fullName.empty()) {
+        // In ký tự đầu tiên của họ
+        cout << (char)toupper(fullName[0]);
+        // Tìm các ký tự đứng sau khoảng trắng
+        for (size_t i = 0; i < fullName.length() - 1; i++) {
+            if (fullName[i] == ' ' && fullName[i + 1] != ' ') {
+                cout << "." << (char)toupper(fullName[i + 1]);
+            }
+        }
+    }
+    cout << endl;
 
     return 0;
 }
