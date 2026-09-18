@@ -33,4 +33,8 @@ int main()
     } else {
         cout << "Not found!" << endl;
     }
+
+    string text = "Hello C++ World";
+    string part = text.substr(6, 3);
+    cout << part << endl;
 }
