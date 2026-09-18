@@ -39,4 +39,9 @@ int main() {
     string s = "Hello World";
     s.erase(5, 6); // remove " World"
     cout << s << endl;
+
+    string s = "I like Java";
+    s.replace(7, 4, "C++"); // Java -> C++
+
+    cout << s << endl;
 }
