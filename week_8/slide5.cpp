@@ -8,4 +8,9 @@ int main()
     string s2 = "C++";
     cout << s1 << endl;
     cout << s2 << endl;
+
+    string name;
+    cout << "Enter your name: ";
+    getline(cin, name);
+    cout << "Hello, " << name << "!" << endl;
 }
