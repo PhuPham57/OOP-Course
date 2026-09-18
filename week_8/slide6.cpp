@@ -26,4 +26,8 @@ int main() {
 
     cout << part1 << endl;
     cout << part2 << endl;
+
+    string s = "Hello";
+    s.append(" C++");
+    cout << s << endl;
 }
