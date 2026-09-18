@@ -25,4 +25,12 @@ int main()
     string s = "Hello";
     cout << "First character: " << s[0] << endl;
     cout << "Third character: " << s[2] << endl;
+
+    string text = "I love C++!";
+    size_t pos = text.find("C++");
+    if (pos != string :: npos) {
+        cout << "Found at position: " << pos << endl;
+    } else {
+        cout << "Not found!" << endl;
+    }
 }
