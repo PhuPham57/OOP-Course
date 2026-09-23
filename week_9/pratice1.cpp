@@ -345,6 +345,22 @@ struct Restaurant
             }
         }
     }
+
+    void revenue()
+    {
+        double total = 0;
+
+        for(int i = 0; i < orderCount; i++)
+        {
+            if(orders[i].status == "Hoan thanh")
+            {
+                total += orders[i].food.price * orders[i].quantity;
+            }
+        }
+
+        cout << "\nTong doanh thu cac don da hoan thanh: "
+            << total << endl;
+    }
 };
 
 int main()
