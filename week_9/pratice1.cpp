@@ -35,6 +35,22 @@ struct Food
         cout << "Don gia: " << price << endl;
         cout << "So luong: " << quantity << endl;
     }
+
+    void viewFoodNoQuan()
+    {
+        cout << "ID: " << id << endl; 
+        cout << "Ten mon: " << name << endl; 
+        cout << "Don gia: " << price << endl;
+    }
+
+    void editPrice()
+    {
+        cout << "Gia hien tai: " << price << endl;
+        cout << "Nhap gia moi: ";
+        cin >> price;
+
+        cout << "Cap nhat gia thanh cong!\n";
+    }
 };
 
 struct Order
@@ -67,6 +83,21 @@ struct Order
         getline(cin, status);
 
         cin.ignore();
+    }
+
+    void viewOrder()
+    {
+        cout << "ID: " << id << endl;
+        cout << "Ten khach hang: " << customerName << endl;
+        cout << "Dia chi: " << address << endl;
+        cout << "\nMon an:\n";
+        food.viewFoodNoQuan();
+        cout << "So luong: " << quantity;
+    }
+
+    void getBill()
+    {
+        cout << "\nTong tien cua don hang " << id <<": " << food.price * quantity;
     }
 };
 
@@ -181,11 +212,7 @@ struct Restaurant
         {
             if(foods[i].id == id)
             {
-                cout << "Gia hien tai: " << foods[i].price << endl;
-                cout << "Nhap gia moi: ";
-                cin >> foods[i].price;
-
-                cout << "Cap nhat gia thanh cong!\n";
+                foods[i].editPrice();
                 return;
             }
         }
@@ -255,7 +282,14 @@ struct Restaurant
         orderCount += n;
     }
 
-
+    void viewOrders()
+    {
+        for(int i = 0; i < orderCount; i++)
+        {
+            cout << "\nDon hang thu " << i << ":\n";
+            orders[i].viewOrder();
+        }
+    }
 };
 
 int main()
