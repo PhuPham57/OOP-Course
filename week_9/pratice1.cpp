@@ -99,6 +99,17 @@ struct Order
     {
         cout << "\nTong tien cua don hang " << id <<": " << food.price * quantity;
     }
+
+    void editStatus()
+    {
+        cout << "Don hang so " << id << endl;
+        cout << "Trang thai hien tai: " << status << endl;
+        cout << "Nhap trang thai moi: ";
+        cin.ignore();
+        getline(cin, status);
+
+        cout << "Cap nhat trang thai thanh cong!\n";
+    }
 };
 
 struct Restaurant
@@ -288,6 +299,50 @@ struct Restaurant
         {
             cout << "\nDon hang thu " << i << ":\n";
             orders[i].viewOrder();
+        }
+    }
+
+    Order orderByID(string id)
+    { 
+        for(int i = 0; i < foodCount; i++)
+        {
+            if(orders[i].id == id)
+            {
+                return orders[i];
+            }
+        }
+        Order empty;
+        return empty;
+    }
+
+    void findOrderByID(string id)
+    {
+        Order rel = orderByID(id);
+
+        if(rel.id != "")
+        {
+            cout << "\nMon an co ma " << id << ":\n";
+            rel.viewOrder();
+        }
+
+        else
+        {
+            cout << "Khong tim thay don hang co ma " << id << "!\n";
+        }
+    }
+
+    void editOrderStatus(string id)
+    {
+        for(int i = 0; i < orderCount; i++)
+        {
+            if(orders[i].id == id)
+            {
+                orders[i].editStatus();
+            }
+            else
+            {
+                cout << "Khong tim thay don hang co ma " << id << "!\n";
+            }
         }
     }
 };
