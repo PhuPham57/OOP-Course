@@ -211,23 +211,51 @@ struct Restaurant
         cout << "Khong tim thay mon an co ma " << id << "!\n";
     }
 
+    bool checkFood(string id, int quantity)
+    {
+        for(int i = 0; i < foodCount; i++)
+        {
+            if(foods[i].id == id)
+            {
+                if(foods[i].quantity >= quantity)
+                {
+                    return true;
+                }
+                else
+                {
+                    cout << "Mon an co ton tai nhung khong du so luong!\n";
+                    return false;
+                }
+            }
+        }
+
+        cout << "Mon an khong ton tai!\n";
+        return false;
+    }
+
     void addOrder()
     {
         int n;
         cout << "\nThem don hang cho quan: \n";
         cout << "Nhap so luong don hang can them: ";
         cin >> n;
-        cin.ignore();
 
         for(int i = orderCount; i < orderCount + n; i++)
         {
             cout << "\nNhap don hang thu " << i + 1 << ":\n";
 
             orders[i].inputOrder();
+
+            if(checkFood(orders[i].food.id, orders[i].quantity))
+            {
+                cout << "Dat mon thanh cong!\n";
+            }
         }
-        
+
         orderCount += n;
     }
+
+
 };
 
 int main()
