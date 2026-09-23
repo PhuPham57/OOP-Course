@@ -39,6 +39,7 @@ struct Restaurant
         cout << "Nhap SDT nha hang: ";
         getline(cin, phone);
         foodCount = 0;
+        orderCount = 0;
     }
 
     void addFood()
@@ -127,7 +128,7 @@ struct Restaurant
         return empty;
     }
 
-    void findFoodByID(string name)
+    void findFoodByName(string name)
     {
         Food rel = foodByName(name);
 
@@ -144,6 +145,42 @@ struct Restaurant
         {
             cout << "Khong tim thay mon an co ten " << name << "!\n";
         }
+    }
+
+    void editFoodPrice(string id)
+    {
+        for(int i = 0; i < foodCount; i++)
+        {
+            if(foods[i].id == id)
+            {
+                cout << "Gia hien tai: " << foods[i].price << endl;
+                cout << "Nhap gia moi: ";
+                cin >> foods[i].price;
+
+                cout << "Cap nhat gia thanh cong!\n";
+                return;
+            }
+        }
+
+        cout << "Khong tim thay mon an co ma " << id << "!\n";
+    }
+
+    void editFoodQuantity(string id)
+    {
+        for(int i = 0; i < foodCount; i++)
+        {
+            if(foods[i].id == id)
+            {
+                cout << "So luong hien tai: " << foods[i].quantity << endl;
+                cout << "Nhap so luong moi: ";
+                cin >> foods[i].quantity;
+
+                cout << "Cap nhat so luong thanh cong!\n";
+                return;
+            }
+        }
+
+        cout << "Khong tim thay mon an co ma " << id << "!\n";
     }
 };
 
