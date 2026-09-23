@@ -8,6 +8,33 @@ struct Food
             name;
     double  price;
     int     quantity;
+
+    void inputFood()
+    {
+        cin.ignore();
+
+        cout << "Nhap ID mon an: ";
+        getline(cin, id);
+
+        cout << "Nhap ten mon an: ";
+        getline(cin, name);
+
+        cout << "Nhap gia: ";
+        cin >> price;
+
+        cout << "Nhap so luong: ";
+        cin >> quantity;
+
+        cin.ignore();
+    }
+
+    void viewFood()
+    {
+        cout << "ID: " << id << endl; 
+        cout << "Ten mon: " << name << endl; 
+        cout << "Don gia: " << price << endl;
+        cout << "So luong: " << quantity << endl;
+    }
 };
 
 struct Order
@@ -18,6 +45,29 @@ struct Order
     Food    food;
     int     quantity;
     string  status;
+
+    void inputOrder()
+    {
+        cout << "Nhap ID don hang: ";
+        getline(cin, id);
+
+        cout << "Nhap ten khach hang: ";
+        getline(cin, customerName);
+
+        cout << "Nhap dia chi don hang: ";
+        getline(cin, address);
+
+        cout << "\nNhap thong tin mon an:\n";
+        food.inputFood();
+
+        cout << "Nhap so luong: ";
+        cin >> quantity;
+
+        cout << "Nhap trang thai don hang: ";
+        getline(cin, status);
+
+        cin.ignore();
+    }
 };
 
 struct Restaurant
@@ -45,7 +95,7 @@ struct Restaurant
     void addFood()
     {
         int n;
-        cout << "Them mon an cho quan: \n";
+        cout << "\nThem mon an cho quan: \n";
         cout << "Nhap so luong mon an can them: ";
         cin >> n;
         cin.ignore();
@@ -53,20 +103,7 @@ struct Restaurant
         for(int i = foodCount; i < foodCount + n; i++)
         {
             cout << "\nNhap mon thu " << i + 1 << ":\n";
-
-            cout << "Nhap ID mon an: ";
-            getline(cin, foods[i].id);
-
-            cout << "Nhap ten mon an: ";
-            getline(cin, foods[i].name);
-
-            cout << "Nhap gia: ";
-            cin >> foods[i].price;
-
-            cout << "Nhap so luong: ";
-            cin >> foods[i].quantity;
-
-            cin.ignore();
+            foods[i].inputFood();
         }
         foodCount += n;
     }
@@ -76,10 +113,7 @@ struct Restaurant
         for(int i = 0; i < foodCount; i++)
         {
             cout << "\nMon an thu " << i << ":\n";
-            cout << "ID: " << foods[i].id << endl; 
-            cout << "Ten mon: " << foods[i].name << endl; 
-            cout << "Don gia: " << foods[i].price << endl;
-            cout << "So luong: " << foods[i].quantity << endl;
+            foods[i].viewFood();
         }
     }
 
@@ -103,10 +137,7 @@ struct Restaurant
         if(rel.id != "")
         {
             cout << "\nMon an co ma " << id << ":\n";
-            cout << "ID: " << rel.id << endl; 
-            cout << "Ten mon: " << rel.name << endl; 
-            cout << "Don gia: " << rel.price << endl;
-            cout << "So luong: " << rel.quantity << endl;
+            rel.viewFood();
         }
 
         else
@@ -135,10 +166,7 @@ struct Restaurant
         if(rel.id != "")
         {
             cout << "\nMon an co ten " << name << ":\n";
-            cout << "ID: " << rel.id << endl; 
-            cout << "Ten mon: " << rel.name << endl; 
-            cout << "Don gia: " << rel.price << endl;
-            cout << "So luong: " << rel.quantity << endl;
+            rel.viewFood();
         }
 
         else
@@ -181,6 +209,24 @@ struct Restaurant
         }
 
         cout << "Khong tim thay mon an co ma " << id << "!\n";
+    }
+
+    void addOrder()
+    {
+        int n;
+        cout << "\nThem don hang cho quan: \n";
+        cout << "Nhap so luong don hang can them: ";
+        cin >> n;
+        cin.ignore();
+
+        for(int i = orderCount; i < orderCount + n; i++)
+        {
+            cout << "\nNhap don hang thu " << i + 1 << ":\n";
+
+            orders[i].inputOrder();
+        }
+        
+        orderCount += n;
     }
 };
 
