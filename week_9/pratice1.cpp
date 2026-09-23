@@ -69,6 +69,18 @@ struct Restaurant
         }
         foodCount += n;
     }
+
+    void viewFoods()
+    {
+        for(int i = 1; i <= foodCount; i++)
+        {
+            cout << "\nMon an thu " << i << ":\n";
+            cout << "ID: " << foods[i - 1].id << endl; 
+            cout << "Ten mon: " << foods[i - 1].name << endl; 
+            cout << "Don gia: " << foods[i - 1].price << endl;
+            cout << "So luong: " << foods[i - 1].quantity << endl;
+        }
+    }
 };
 
 int main()
