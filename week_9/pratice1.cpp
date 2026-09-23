@@ -72,13 +72,77 @@ struct Restaurant
 
     void viewFoods()
     {
-        for(int i = 1; i <= foodCount; i++)
+        for(int i = 0; i < foodCount; i++)
         {
             cout << "\nMon an thu " << i << ":\n";
-            cout << "ID: " << foods[i - 1].id << endl; 
-            cout << "Ten mon: " << foods[i - 1].name << endl; 
-            cout << "Don gia: " << foods[i - 1].price << endl;
-            cout << "So luong: " << foods[i - 1].quantity << endl;
+            cout << "ID: " << foods[i].id << endl; 
+            cout << "Ten mon: " << foods[i].name << endl; 
+            cout << "Don gia: " << foods[i].price << endl;
+            cout << "So luong: " << foods[i].quantity << endl;
+        }
+    }
+
+    Food foodByID(string id)
+    { 
+        for(int i = 0; i < foodCount; i++)
+        {
+            if(foods[i].id == id)
+            {
+                return foods[i];
+            }
+        }
+        Food empty;
+        return empty;
+    }
+
+    void findFoodByID(string id)
+    {
+        Food rel = foodByID(id);
+
+        if(rel.id != "")
+        {
+            cout << "\nMon an co ma " << id << ":\n";
+            cout << "ID: " << rel.id << endl; 
+            cout << "Ten mon: " << rel.name << endl; 
+            cout << "Don gia: " << rel.price << endl;
+            cout << "So luong: " << rel.quantity << endl;
+        }
+
+        else
+        {
+            cout << "Khong tim thay mon an co ma " << id << "!\n";
+        }
+    }
+
+    Food foodByName(string name)
+    { 
+        for(int i = 0; i < foodCount; i++)
+        {
+            if(foods[i].name == name)
+            {
+                return foods[i];
+            }
+        }
+        Food empty;
+        return empty;
+    }
+
+    void findFoodByID(string name)
+    {
+        Food rel = foodByName(name);
+
+        if(rel.id != "")
+        {
+            cout << "\nMon an co ten " << name << ":\n";
+            cout << "ID: " << rel.id << endl; 
+            cout << "Ten mon: " << rel.name << endl; 
+            cout << "Don gia: " << rel.price << endl;
+            cout << "So luong: " << rel.quantity << endl;
+        }
+
+        else
+        {
+            cout << "Khong tim thay mon an co ten " << name << "!\n";
         }
     }
 };
