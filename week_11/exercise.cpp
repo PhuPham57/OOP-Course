@@ -1,16 +1,12 @@
 #include <iostream>
 #include <vector>
 #include <string>
-
 using namespace std;
 
 class Date {
-private:
-    int year;
-    int month;
-    int day;
-
 public:
+    int year, month, day;
+
     Date() {
         year = 0;
         month = 0;
@@ -22,117 +18,97 @@ public:
         month = m;
         day = d;
     }
-
-    void print() {
-        cout << year << "/" << month << "/" << day;
-    }
-
-    int getYear() {
-        return year;
-    }
-
-    int getMonth() {
-        return month;
-    }
-
-    int getDay() {
-        return day;
-    }
 };
-
 
 class Student {
 private:
     string name;
     string address;
     Date birthdate;
-    bool hasBirth;
     string cccd;
 
 public:
-    // Constructor mac dinh
+    // ===== Constructors =====
+
     Student() {
         name = "";
         address = "";
-        hasBirth = false;
+        birthdate = Date();
         cccd = "";
     }
 
-    // Constructor 1 tham so
     Student(string n) {
         name = n;
         address = "";
-        hasBirth = false;
+        birthdate = Date();
         cccd = "";
     }
 
-    // Constructor Date
-    Student(Date d) {
-        name = "";
-        address = "";
-        birthdate = d;
-        hasBirth = true;
-        cccd = "";
-    }
-
-    // Constructor 2 tham so
-    Student(string n, string a) {
+    Student(string n, string addr) {
         name = n;
-        address = a;
-        hasBirth = false;
+        address = addr;
+        birthdate = Date();
         cccd = "";
     }
 
-    // Constructor 3 tham so
-    Student(string n, string a, Date d) {
+    Student(string n, string addr, Date d) {
         name = n;
-        address = a;
+        address = addr;
         birthdate = d;
-        hasBirth = true;
         cccd = "";
     }
 
-    // Constructor 4 tham so
-    Student(string n, string a, Date d, string cc) {
+    Student(string n, string addr, Date d, string id) {
         name = n;
-        address = a;
+        address = addr;
         birthdate = d;
-        hasBirth = true;
-        cccd = cc;
+        cccd = id;
     }
 
-    void setStudentInfo() {
-        cout << "Nhap ten: ";
-        getline(cin, name);
+    // ===== Set Student Info =====
 
-        cout << "Nhap dia chi: ";
-        getline(cin, address);
-
-        int y, m, d;
-
-        cout << "Nhap ngay sinh (yyyy mm dd): ";
-        cin >> y >> m >> d;
-
-        birthdate = Date(y, m, d);
-        hasBirth = true;
-
-        cin.ignore();
-
-        cout << "Nhap CCCD: ";
-        getline(cin, cccd);
+    void setStudentInfo(string n) {
+        name = n;
     }
 
-    string getCCCD() {
-        return cccd;
+    void setStudentInfo(string n, string addr) {
+        name = n;
+        address = addr;
     }
 
-    // Tim sinh vien theo CCCD
-    static Student getStudentInfo(
-        vector<Student> students,
-        string key_cccd
-    ) {
+    void setStudentInfo(string n, string addr, Date d) {
+        name = n;
+        address = addr;
+        birthdate = d;
+    }
+
+    void setStudentInfo(string n, string addr, Date d, string id) {
+        name = n;
+        address = addr;
+        birthdate = d;
+        cccd = id;
+    }
+
+    // ===== Get Student Info =====
+
+    void getStudentInfo() {
+        cout << "====================" << endl;
+        cout << "=== Student Info ===" << endl;
+        cout << "====================" << endl;
+        cout << "Name: " << name << endl;
+        cout << "Address: " << address << endl;
+        cout << "Birthdate: "
+             << birthdate.year << "/"
+             << birthdate.month << "/"
+             << birthdate.day << endl;
+        cout << "CCCD: " << cccd << endl;
+    }
+
+    // ===== Search by CCCD =====
+
+    static Student findStudentByCCCD(vector<Student> students, string id) {
         for (int i = 0; i < students.size(); i++) {
-            if (students[i].cccd == key_cccd) {
+            if (students[i].cccd == id) {
                 return students[i];
             }
         }
@@ -140,15 +116,13 @@ public:
         return Student();
     }
 
-    // Tim sinh vien theo ten
-    static vector<Student> getStudents(
-        vector<Student> students,
-        string sub
-    ) {
+    // ===== Search by Name =====
+
+    static vector<Student> findStudentsByName(vector<Student> students, string key) {
         vector<Student> result;
 
         for (int i = 0; i < students.size(); i++) {
-            if (students[i].name.find(sub) != string::npos) {
+            if (students[i].name.find(key) != string::npos) {
                 result.push_back(students[i]);
             }
         }
@@ -156,94 +130,181 @@ public:
         return result;
     }
 
-    // Tim sinh vien theo tuoi
-    static vector<Student> getStudentsByAge(
-        vector<Student> students,
-        int age
-    ) {
+    // ===== Search by Age =====
+
+    static vector<Student> findStudentsByAge(vector<Student> students, int age) {
         vector<Student> result;
 
+        int currentYear = 2026;
+
         for (int i = 0; i < students.size(); i++) {
-            if (students[i].hasBirth == false) {
-                continue;
-            }
+            if (students[i].birthdate.year != 0) {
+                int studentAge = currentYear - students[i].birthdate.year;
 
-            int studentAge = 2026 - students[i].birthdate.getYear();
-
-            if (studentAge == age) {
-                result.push_back(students[i]);
+                if (studentAge == age) {
+                    result.push_back(students[i]);
+                }
             }
         }
 
         return result;
     }
 
-    void print() {
-        cout << "Ten: " << name << endl;
-        cout << "Dia chi: " << address << endl;
+    // ===== Statistics by Birth Year =====
 
-        cout << "Ngay sinh: ";
-        if (hasBirth) {
-            birthdate.print();
-        }
-        else {
-            cout << "N/A";
-        }
-
+    static void statisticByYear(vector<Student> students, vector<int> years) {
         cout << endl;
-        cout << "CCCD: " << cccd << endl;
+        cout << "===== Statistics by Birth Year =====" << endl;
+
+        for (int i = 0; i < years.size(); i++) {
+            int count = 0;
+
+            for (int j = 0; j < students.size(); j++) {
+                if (students[j].birthdate.year == years[i]) {
+                    count++;
+                }
+            }
+
+            cout << "Year " << years[i] << ": "
+                 << count << " student(s)" << endl;
+        }
+    }
+
+    // ===== Statistics by Province =====
+
+    static void statisticByProvince(vector<Student> students,
+                                    vector<string> provinces) {
+        cout << endl;
+        cout << "===== Statistics by Province =====" << endl;
+
+        for (int i = 0; i < provinces.size(); i++) {
+            int count = 0;
+
+            for (int j = 0; j < students.size(); j++) {
+                if (students[j].address.find(provinces[i]) != string::npos) {
+                    count++;
+                }
+            }
+
+            cout << provinces[i] << ": "
+                 << count << " student(s)" << endl;
+        }
+    }
+
+    // ===== Print List =====
+
+    static void printList(vector<Student> students) {
+        for (int i = 0; i < students.size(); i++) {
+            students[i].getStudentInfo();
+            cout << endl;
+        }
     }
 };
 
-
 int main() {
+
+    // ===== Create Students =====
+
+    Student student1;
+
+    Student student2("Huong");
+
+    Student student3("An", "Vo Van Ngan");
+
+    Date d(1989, 9, 12);
+    Student student4("DoMIXI", "Ha Noi", d, "0007777056");
+
+    Date d2(1996, 10, 26);
+    Student student5("DungSenpai", "Da Nang", d2, "999993884");
+
+    Date d3(2000, 5, 15);
+    Student student6("Nguyen Van A",
+                     "Thu Duc, Ho Chi Minh",
+                     d3,
+                     "123456789");
+
+    Date d4(2001, 8, 20);
+    Student student7("Tran Van B",
+                     "Bien Hoa, Dong Nai",
+                     d4,
+                     "987654321");
+
+    Date d5(2000, 11, 10);
+    Student student8("Le Van C",
+                     "Thu Dau Mot, Binh Duong",
+                     d5,
+                     "111222333");
+
+    // ===== Put Students into Vector =====
 
     vector<Student> students;
 
-    students.push_back(Student());
-    students.push_back(Student("Huong"));
-    students.push_back(
-        Student("", "Vo Van Ngan", Date(2000, 5, 15))
-    );
+    students.push_back(student1);
+    students.push_back(student2);
+    students.push_back(student3);
+    students.push_back(student4);
+    students.push_back(student5);
+    students.push_back(student6);
+    students.push_back(student7);
+    students.push_back(student8);
 
-    // Tim sinh vien theo CCCD
-    string key = "123456789";
+    // ===== Display Students =====
 
-    Student s = Student::getStudentInfo(
+    cout << "========== ALL STUDENTS ==========" << endl;
+    Student::printList(students);
+
+    // ===== Search by CCCD =====
+
+    cout << endl;
+    cout << "========== SEARCH BY CCCD ==========" << endl;
+
+    Student result = Student::findStudentByCCCD(
         students,
-        key
+        "123456789"
     );
 
-    if (s.getCCCD() != "") {
-        cout << "\nThong tin sinh vien tim thay:\n";
-        s.print();
-    }
-    else {
-        cout << "\nKhong tim thay sinh vien voi CCCD: "
-             << key << endl;
-    }
+    result.getStudentInfo();
 
-    // Tim sinh vien theo ten
-    vector<Student> vec_name =
-        Student::getStudents(students, "Hu");
+    // ===== Search by Name =====
 
-    cout << "\nSinh vien co ten chua 'Hu':\n";
+    cout << endl;
+    cout << "========== SEARCH BY NAME ==========" << endl;
 
-    for (int i = 0; i < vec_name.size(); i++) {
-        vec_name[i].print();
-        cout << endl;
-    }
+    vector<Student> nameResult =
+        Student::findStudentsByName(students, "Van");
 
-    // Tim sinh vien theo tuoi
-    vector<Student> vec_age =
-        Student::getStudentsByAge(students, 26);
+    Student::printList(nameResult);
 
-    cout << "\nSinh vien do tuoi 26:\n";
+    // ===== Search by Age =====
 
-    for (int i = 0; i < vec_age.size(); i++) {
-        vec_age[i].print();
-        cout << endl;
-    }
+    cout << endl;
+    cout << "========== SEARCH BY AGE ==========" << endl;
+
+    vector<Student> ageResult =
+        Student::findStudentsByAge(students, 26);
+
+    Student::printList(ageResult);
+
+    // ===== Statistics by Birth Year =====
+
+    vector<int> years;
+
+    years.push_back(2000);
+    years.push_back(2001);
+
+    Student::statisticByYear(students, years);
+
+    // ===== Statistics by Province =====
+
+    vector<string> provinces;
+
+    provinces.push_back("Ho Chi Minh");
+    provinces.push_back("Dong Nai");
+    provinces.push_back("Binh Duong");
+    provinces.push_back("Ha Noi");
+    provinces.push_back("Da Nang");
+
+    Student::statisticByProvince(students, provinces);
 
     return 0;
 }
