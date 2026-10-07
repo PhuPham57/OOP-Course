@@ -150,46 +150,73 @@ public:
         return result;
     }
 
-    // ===== Statistics by Birth Year =====
+    // ===== Search by Birth Year =====
 
-    static void statisticByYear(vector<Student> students, vector<int> years) {
-        cout << endl;
-        cout << "===== Statistics by Birth Year =====" << endl;
+static vector<Student> getStudentsByYear(vector<Student> students, int year) {
+    vector<Student> result;
 
-        for (int i = 0; i < years.size(); i++) {
-            int count = 0;
-
-            for (int j = 0; j < students.size(); j++) {
-                if (students[j].birthdate.year == years[i]) {
-                    count++;
-                }
-            }
-
-            cout << "Year " << years[i] << ": "
-                 << count << " student(s)" << endl;
+    for (int i = 0; i < students.size(); i++) {
+        if (students[i].birthdate.year == year) {
+            result.push_back(students[i]);
         }
     }
 
-    // ===== Statistics by Province =====
+    return result;
+}
 
-    static void statisticByProvince(vector<Student> students,
-                                    vector<string> provinces) {
-        cout << endl;
-        cout << "===== Statistics by Province =====" << endl;
+// ===== Search by Province =====
 
-        for (int i = 0; i < provinces.size(); i++) {
-            int count = 0;
+static vector<Student> getStudentsByProvince(vector<Student> students, string province) {
+    vector<Student> result;
 
-            for (int j = 0; j < students.size(); j++) {
-                if (students[j].address.find(provinces[i]) != string::npos) {
-                    count++;
-                }
-            }
-
-            cout << provinces[i] << ": "
-                 << count << " student(s)" << endl;
+    for (int i = 0; i < students.size(); i++) {
+        if (students[i].address.find(province) != string::npos) {
+            result.push_back(students[i]);
         }
     }
+
+    return result;
+}
+
+// ===== Statistics by Birth Year =====
+
+static vector<int> statisticByYear(vector<Student> students, vector<int> years) {
+    vector<int> counts;
+
+    for (int i = 0; i < years.size(); i++) {
+        int count = 0;
+
+        for (int j = 0; j < students.size(); j++) {
+            if (students[j].birthdate.year == years[i]) {
+                count++;
+            }
+        }
+
+        counts.push_back(count);
+    }
+
+    return counts;
+}
+
+// ===== Statistics by Province =====
+
+static vector<int> statisticByProvince(vector<Student> students, vector<string> provinces) {
+    vector<int> counts;
+
+    for (int i = 0; i < provinces.size(); i++) {
+        int count = 0;
+
+        for (int j = 0; j < students.size(); j++) {
+            if (students[j].address.find(provinces[i]) != string::npos) {
+                count++;
+            }
+        }
+
+        counts.push_back(count);
+    }
+
+    return counts;
+}
 
     // ===== Print List =====
 
@@ -275,36 +302,44 @@ int main() {
 
     Student::printList(nameResult);
 
-    // ===== Search by Age =====
-
-    cout << endl;
-    cout << "========== SEARCH BY AGE ==========" << endl;
-
-    vector<Student> ageResult =
-        Student::findStudentsByAge(students, 26);
-
-    Student::printList(ageResult);
-
     // ===== Statistics by Birth Year =====
 
-    vector<int> years;
+cout << endl;
+cout << "===== Statistics by Birth Year =====" << endl;
 
-    years.push_back(2000);
-    years.push_back(2001);
+vector<int> years;
+years.push_back(2000);
+years.push_back(2001);
 
-    Student::statisticByYear(students, years);
+vector<int> yearCounts = Student::statisticByYear(students, years);
 
-    // ===== Statistics by Province =====
+for (int i = 0; i < years.size(); i++) {
+    cout << "Year " << years[i] << ": " << yearCounts[i] << " student(s)" << endl;
 
-    vector<string> provinces;
+    vector<Student> yearList = Student::getStudentsByYear(students, years[i]);
+    Student::printList(yearList);
+}
 
-    provinces.push_back("Ho Chi Minh");
-    provinces.push_back("Dong Nai");
-    provinces.push_back("Binh Duong");
-    provinces.push_back("Ha Noi");
-    provinces.push_back("Da Nang");
+// ===== Statistics by Province =====
 
-    Student::statisticByProvince(students, provinces);
+cout << endl;
+cout << "===== Statistics by Province =====" << endl;
+
+vector<string> provinces;
+provinces.push_back("Ho Chi Minh");
+provinces.push_back("Dong Nai");
+provinces.push_back("Binh Duong");
+provinces.push_back("Ha Noi");
+provinces.push_back("Da Nang");
+
+vector<int> provinceCounts = Student::statisticByProvince(students, provinces);
+
+for (int i = 0; i < provinces.size(); i++) {
+    cout << provinces[i] << ": " << provinceCounts[i] << " student(s)" << endl;
+
+    vector<Student> provinceList = Student::getStudentsByProvince(students, provinces[i]);
+    Student::printList(provinceList);
+}
 
     return 0;
 }
