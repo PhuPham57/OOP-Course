@@ -450,5 +450,62 @@ int main() {
         }
     }
 
+    //
+    Date ngayMo(2026, 9, 10);
+    FishShop cuaHang(1, "Cua hang ca canh PhuDZ", "120 Yen Lang, HN", "Pham Thien Phu", ngayMo);
+
+    cuaHang.addCategory(Category(1, "Ca nuoc ngot nhiet doi", "Ca nho nuoi trong be o nha"));
+    cuaHang.addCategory(Category(2, "Ca ho cichlid", "Ca lon, nang dong, hay giu long dia"));
+    cuaHang.addCategory(Category(3, "Ca ho", "Ca nuoi ngoai troi trong ho"));
+    cuaHang.addCategory(Category(4, "Ca bien", "Ca nuoc man nuoi trong be bien"));
+
+    cuaHang.addFish(Fish(1, "Ca neon", "Xanh", "Hien lanh", 1));
+    cuaHang.addFish(Fish(2, "Ca molly", "Den", "De nuoi", 1));
+    cuaHang.addFish(Fish(3, "Ca platy", "Cam", "Nho gon", 1));
+    cuaHang.addFish(Fish(4, "Ca guppy", "Xanh", "Nang dong", 1));
+    cuaHang.addFish(Fish(5, "Ca betta", "Do", "Hung han", 1));
+    cuaHang.addFish(Fish(6, "Ca tu quy", "Bac", "Hien lanh", 1));
+    cuaHang.addFish(Fish(7, "Ca hong nhung", "Do", "De nuoi", 1));
+    cuaHang.addFish(Fish(8, "Ca kiem", "Cam", "Nang dong", 1));
+    cuaHang.addFish(Fish(9, "Ca ba mau", "Vang", "Hien lanh", 1));
+    cuaHang.addFish(Fish(10, "Ca mun", "Den", "De nuoi", 1));
+
+    cuaHang.addFish(Fish(11, "Ca dia", "Do", "Thong minh", 2));
+    cuaHang.addFish(Fish(12, "Ca la han", "Do", "Hung han", 2));
+    cuaHang.addFish(Fish(13, "Ca than tien", "Bac", "Hien lanh", 2));
+    cuaHang.addFish(Fish(14, "Ca oscar", "Den", "Thong minh", 2));
+    cuaHang.addFish(Fish(15, "Ca ro", "Vang", "Giu long dia", 2));
+    cuaHang.addFish(Fish(16, "Ca vet", "Xanh", "Nang dong", 2));
+    cuaHang.addFish(Fish(17, "Ca hoang de", "Vang", "Hung han", 2));
+    cuaHang.addFish(Fish(18, "Ca dia xanh", "Xanh", "Thong minh", 2));
+    cuaHang.addFish(Fish(19, "Ca tuong", "Bac", "Nhay cao", 2));
+    cuaHang.addFish(Fish(20, "Ca thu", "Cam", "Nang dong", 2));
+
+    cuaHang.addFish(Fish(21, "Ca koi do", "Do", "Hien lanh", 3));
+    cuaHang.addFish(Fish(22, "Ca koi vang", "Vang", "Hien lanh", 3));
+    cuaHang.addFish(Fish(23, "Ca koi den", "Den", "Song lau", 3));
+    cuaHang.addFish(Fish(24, "Ca chep vang", "Vang", "De nuoi", 3));
+    cuaHang.addFish(Fish(25, "Ca vang ho", "Cam", "De nuoi", 3));
+    cuaHang.addFish(Fish(26, "Ca chep kieng", "Trang", "Hien lanh", 3));
+    cuaHang.addFish(Fish(27, "Ca koi trang", "Trang", "Song lau", 3));
+    cuaHang.addFish(Fish(28, "Ca koi cam", "Cam", "Hien lanh", 3));
+    cuaHang.addFish(Fish(29, "Ca diec", "Bac", "Khoe manh", 3));
+    cuaHang.addFish(Fish(30, "Ca tre", "Den", "Song lau", 3));
+
+    cuaHang.addFish(Fish(31, "Ca he", "Cam", "Nhat gan", 4));
+    cuaHang.addFish(Fish(32, "Ca tang xanh", "Xanh", "Nang dong", 4));
+    cuaHang.addFish(Fish(33, "Ca buom", "Vang", "Nhat gan", 4));
+    cuaHang.addFish(Fish(34, "Ca chim xanh", "Xanh", "Hien lanh", 4));
+    cuaHang.addFish(Fish(35, "Ca mao tien", "Do", "Hung han", 4));
+    cuaHang.addFish(Fish(36, "Ca ngua van", "Den", "Nang dong", 4));
+    cuaHang.addFish(Fish(37, "Ca bong den", "Den", "Nho gon", 4));
+    cuaHang.addFish(Fish(38, "Ca than tien bien", "Vang", "Hien lanh", 4));
+    cuaHang.addFish(Fish(39, "Ca hoang de bien", "Xanh", "Dep mat", 4));
+    cuaHang.addFish(Fish(40, "Ca nuc", "Bac", "Khoe manh", 4));
+
+    cout << endl;
+    cout << "THONG TIN CUA HANG: " << endl;
+    cuaHang.displayFishShopInfo();
+
     return 0;
 }
