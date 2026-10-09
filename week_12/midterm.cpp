@@ -4,6 +4,23 @@ using namespace std;
 
 #define MAX 100
 
+class Date {
+public:
+    int year, month, day;
+
+    Date() {
+        year = 0;
+        month = 0;
+        day = 0;
+    }
+
+    Date(int y, int m, int d) {
+        year = y;
+        month = m;
+        day = d;
+    }
+};
+
 class Fish {
 private:
     int id;
@@ -172,6 +189,40 @@ public:
         cout << "Category ID: " << categoryId << endl;
         cout << "Category Name: " << categoryName << endl;
         cout << "Description: " << description << endl;
+    }
+};
+
+class FishShop {
+private:
+    int id;
+    string name;
+    string address;
+    string owner;
+    Date startdate;
+    Category categories[MAX];
+    Fish fishes[MAX];
+    int soDanhMuc;
+    int soCa;
+
+public:
+    FishShop() {
+        id = 0;
+        name = "";
+        address = "";
+        owner = "";
+        startdate = Date();
+        soDanhMuc = 0;
+        soCa = 0;
+    }
+
+    FishShop(int i, string n, string addr, string o, Date d) {
+        id = i;
+        name = n;
+        address = addr;
+        owner = o;
+        startdate = d;
+        soDanhMuc = 0;
+        soCa = 0;
     }
 };
 
