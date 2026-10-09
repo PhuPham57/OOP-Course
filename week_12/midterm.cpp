@@ -10,6 +10,7 @@ private:
     string name;
     string color;
     string characteristic;
+    int categoryId;
 
     public:
     Fish() {
@@ -17,6 +18,7 @@ private:
         name = "";
         color = "";
         characteristic = "";
+        categoryId = 0;
     }
 
     Fish(int i) {
@@ -24,6 +26,7 @@ private:
         name = "";
         color = "";
         characteristic = "";
+        categoryId = 0;
     }
 
     Fish(int i, string n) {
@@ -31,6 +34,7 @@ private:
         name = n;
         color = "";
         characteristic = "";
+        categoryId = 0;
     }
 
     Fish(int i, string n, string c) {
@@ -38,6 +42,7 @@ private:
         name = n;
         color = c;
         characteristic = "";
+        categoryId = 0;
     }
 
     Fish(int i, string n, string c, string ch) {
@@ -45,6 +50,15 @@ private:
         name = n;
         color = c;
         characteristic = ch;
+        categoryId = 0;
+    }
+
+    Fish(int i, string n, string c, string ch, int catId) {
+        id = i;
+        name = n;
+        color = c;
+        characteristic = ch;
+        categoryId = catId;
     }
 
     int getId() {
@@ -79,14 +93,86 @@ private:
         characteristic = ch;
     }
 
+    int getCategoryId() {
+        return categoryId;
+    }
+
+    void setCategoryId(int catId) {
+        categoryId = catId;
+    }
+
     void displayFishInfo() {
         cout << "Fish: " << name << " - " << id << endl;
         cout << "ID: " << id << endl;
         cout << "Name: " << name << endl;
         cout << "Color: " << color << endl;
         cout << "Characteristic: " << characteristic << endl;
+        cout << "Category ID: " << categoryId << endl;
     }
 
+};
+
+class Category {
+private:
+    int categoryId;
+    string categoryName;
+    string description;
+
+public:
+    Category() {
+        categoryId = 0;
+        categoryName = "";
+        description = "";
+    }
+
+    Category(int id) {
+        categoryId = id;
+        categoryName = "";
+        description = "";
+    }
+
+    Category(int id, string name) {
+        categoryId = id;
+        categoryName = name;
+        description = "";
+    }
+
+    Category(int id, string name, string desc) {
+        categoryId = id;
+        categoryName = name;
+        description = desc;
+    }
+
+    int getCategoryId() {
+        return categoryId;
+    }
+
+    string getCategoryName() {
+        return categoryName;
+    }
+
+    string getDescription() {
+        return description;
+    }
+
+    void setCategoryId(int id) {
+        categoryId = id;
+    }
+
+    void setCategoryName(string name) {
+        categoryName = name;
+    }
+
+    void setDescription(string desc) {
+        description = desc;
+    }
+
+    void displayCategoryInfo() {
+        cout << endl << "Category: " << categoryName << " - " << categoryId << endl;
+        cout << "Category ID: " << categoryId << endl;
+        cout << "Category Name: " << categoryName << endl;
+        cout << "Description: " << description << endl;
+    }
 };
 
 int main() {
@@ -104,7 +190,7 @@ int main() {
     ca5.displayFishInfo();
 
     ca3.setName("Ca do");
-    ca3.setColor("Red");
+    ca3.setColor("Do");
     ca3.setCharacteristic("Du");
 
     cout << endl;
@@ -118,25 +204,34 @@ int main() {
 
     ca3.displayFishInfo();
 
-        Fish danhSach[MAX];
+    Fish danhSach[MAX];
     int soLuong = 0;
 
-    danhSach[soLuong++] = ca1;
-    danhSach[soLuong++] = ca2;
-    danhSach[soLuong++] = ca3;
-    danhSach[soLuong++] = ca4;
-    danhSach[soLuong++] = ca5;
+    danhSach[soLuong++] = Fish(6, "Ca vang", "Cam", "De nuoi", 3);
+    danhSach[soLuong++] = Fish(7, "Ca than tien", "Bac", "Hien lanh", 2);
+    danhSach[soLuong++] = Fish(8, "Ca neon", "Xanh", "Hien lanh", 1);
+    danhSach[soLuong++] = Fish(9, "Ca dia", "Do", "Thong minh", 2);
+    danhSach[soLuong++] = Fish(10, "Ca molly", "Den", "De nuoi", 1);
+    danhSach[soLuong++] = Fish(11, "Ca platy", "Cam", "Nho gon", 1);
+    danhSach[soLuong++] = Fish(12, "Ca rong", "Bac", "Nhay cao", 1);
+    danhSach[soLuong++] = Fish(13, "Ca dia hoang", "Do", "Nhay cam", 2);
+    danhSach[soLuong++] = Fish(14, "Ca betta", "Xanh", "Nang dong", 1);
+    danhSach[soLuong++] = Fish(15, "Ca la han", "Do", "Hung han", 2);
 
-    danhSach[soLuong++] = Fish(6, "Ca vang", "Cam", "De nuoi");
-    danhSach[soLuong++] = Fish(7, "Ca than tien", "Bac", "Hien lanh");
-    danhSach[soLuong++] = Fish(8, "Ca neon", "Xanh", "Hien lanh");
-    danhSach[soLuong++] = Fish(9, "Ca dia", "Do", "Thong minh");
-    danhSach[soLuong++] = Fish(10, "Ca molly", "Den", "De nuoi");
-    danhSach[soLuong++] = Fish(11, "Ca platy", "Cam", "Nho gon");
-    danhSach[soLuong++] = Fish(12, "Ca rong", "Bac", "Nhay cao");
-    danhSach[soLuong++] = Fish(13, "Ca dia hoang", "Do", "Nhay cam");
-    danhSach[soLuong++] = Fish(14, "Ca betta", "Xanh", "Nang dong");
-    danhSach[soLuong++] = Fish(15, "Ca la han", "Do", "Hung han");
+    ca1.setCategoryId(1);
+    danhSach[soLuong++] = ca1;
+
+    ca2.setCategoryId(1);
+    danhSach[soLuong++] = ca2;
+
+    ca3.setCategoryId(1);
+    danhSach[soLuong++] = ca3;
+
+    ca4.setCategoryId(1);
+    danhSach[soLuong++] = ca4;
+
+    ca5.setCategoryId(3);
+    danhSach[soLuong++] = ca5;
 
     cout << endl;
     cout << "NHOM CA THEO MAU" << endl;
@@ -169,6 +264,36 @@ int main() {
                 cout << "  - [" << danhSach[k].getId() << "] "
                      << danhSach[k].getName() << endl;
             }
+        }
+    }
+
+    Category danhMuc[3];
+    danhMuc[0] = Category(1, "Ca nuoc ngot nhiet doi", "Ca nho nuoi trong be o nha");
+    danhMuc[1] = Category(2, "Ca ho cichlid", "Ca lon, nang dong, hay giu long dia");
+    danhMuc[2] = Category(3, "Ca ho", "Ca nuoi ngoai troi trong ho");
+    int soDanhMuc = 3;
+
+        cout << endl;
+    cout << "========== TAT CA DANH MUC ==========" << endl;
+
+    for (int i = 0; i < soDanhMuc; i++) {
+        danhMuc[i].displayCategoryInfo();
+    }
+
+    int chon = 2;
+
+    cout << endl;
+    cout << "CA THUOC DANH MUC ID " << chon << endl;
+
+    for (int i = 0; i < soDanhMuc; i++) {
+        if (danhMuc[i].getCategoryId() == chon) {
+            cout << "Category: " << danhMuc[i].getCategoryName() << endl;
+        }
+    }
+
+    for (int i = 0; i < soLuong; i++) {
+        if (danhSach[i].getCategoryId() == chon) {
+            danhSach[i].displayFishInfo();
         }
     }
 
