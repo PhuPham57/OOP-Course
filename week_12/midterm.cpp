@@ -2,6 +2,8 @@
 #include <string>
 using namespace std;
 
+#define MAX 100
+
 class Fish {
 private:
     int id;
@@ -115,6 +117,60 @@ int main() {
     cout << endl;
 
     ca3.displayFishInfo();
+
+        Fish danhSach[MAX];
+    int soLuong = 0;
+
+    danhSach[soLuong++] = ca1;
+    danhSach[soLuong++] = ca2;
+    danhSach[soLuong++] = ca3;
+    danhSach[soLuong++] = ca4;
+    danhSach[soLuong++] = ca5;
+
+    danhSach[soLuong++] = Fish(6, "Ca vang", "Cam", "De nuoi");
+    danhSach[soLuong++] = Fish(7, "Ca than tien", "Bac", "Hien lanh");
+    danhSach[soLuong++] = Fish(8, "Ca neon", "Xanh", "Hien lanh");
+    danhSach[soLuong++] = Fish(9, "Ca dia", "Do", "Thong minh");
+    danhSach[soLuong++] = Fish(10, "Ca molly", "Den", "De nuoi");
+    danhSach[soLuong++] = Fish(11, "Ca platy", "Cam", "Nho gon");
+    danhSach[soLuong++] = Fish(12, "Ca rong", "Bac", "Nhay cao");
+    danhSach[soLuong++] = Fish(13, "Ca dia hoang", "Do", "Nhay cam");
+    danhSach[soLuong++] = Fish(14, "Ca betta", "Xanh", "Nang dong");
+    danhSach[soLuong++] = Fish(15, "Ca la han", "Do", "Hung han");
+
+    cout << endl;
+    cout << "NHOM CA THEO MAU" << endl;
+
+    for (int i = 0; i < soLuong; i++) {
+        bool daIn = false;
+
+        for (int j = 0; j < i; j++) {
+            if (danhSach[j].getColor() == danhSach[i].getColor()) {
+                daIn = true;
+                break;
+            }
+        }
+
+        if (daIn) {
+            continue;
+        }
+
+        string mau = danhSach[i].getColor();
+
+        if (mau == "") {
+            cout << endl << "Color: (No color)" << endl;
+        }
+        else {
+            cout << endl << "Color: " << mau << endl;
+        }
+
+        for (int k = 0; k < soLuong; k++) {
+            if (danhSach[k].getColor() == mau) {
+                cout << "  - [" << danhSach[k].getId() << "] "
+                     << danhSach[k].getName() << endl;
+            }
+        }
+    }
 
     return 0;
 }
