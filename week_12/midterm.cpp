@@ -224,6 +224,108 @@ public:
         soDanhMuc = 0;
         soCa = 0;
     }
+
+        int getId() {
+        return id;
+    }
+
+    string getName() {
+        return name;
+    }
+
+    string getAddress() {
+        return address;
+    }
+
+    string getOwner() {
+        return owner;
+    }
+
+    Date getStartdate() {
+        return startdate;
+    }
+
+    int getSoDanhMuc() {
+        return soDanhMuc;
+    }
+
+    int getSoCa() {
+        return soCa;
+    }
+
+    Category getCategory(int index) {
+        return categories[index];
+    }
+
+    Fish getFish(int index) {
+        return fishes[index];
+    }
+
+        void setId(int i) {
+        id = i;
+    }
+
+    void setName(string n) {
+        name = n;
+    }
+
+    void setAddress(string addr) {
+        address = addr;
+    }
+
+    void setOwner(string o) {
+        owner = o;
+    }
+
+    void setStartdate(Date d) {
+        startdate = d;
+    }
+
+    void setCategory(int index, Category c) {
+        if (index >= 0 && index < soDanhMuc) {
+            categories[index] = c;
+        }
+    }
+
+    void setFish(int index, Fish f) {
+        if (index >= 0 && index < soCa) {
+            fishes[index] = f;
+        }
+    }
+
+        void addCategory(Category c) {
+        if (soDanhMuc < MAX) {
+            categories[soDanhMuc++] = c;
+        }
+    }
+
+    void addFish(Fish f) {
+        if (soCa < MAX) {
+            fishes[soCa++] = f;
+        }
+    }
+
+    void displayFishShopInfo() {
+        cout << "Fish Shop: " << name << " - " << id << endl;
+        cout << "ID: " << id << endl;
+        cout << "Name: " << name << endl;
+        cout << "Address: " << address << endl;
+        cout << "Owner: " << owner << endl;
+        cout << "Start date: " << startdate.year << "/"
+             << startdate.month << "/" << startdate.day << endl;
+        cout << "So danh muc: " << soDanhMuc << endl;
+        cout << "So ca: " << soCa << endl;
+
+        for (int i = 0; i < soDanhMuc; i++) {
+            categories[i].displayCategoryInfo();
+
+            for (int j = 0; j < soCa; j++) {
+                if (fishes[j].getCategoryId() == categories[i].getCategoryId()) {
+                    fishes[j].displayFishInfo();
+                }
+            }
+        }
+    }
 };
 
 int main() {
@@ -324,8 +426,8 @@ int main() {
     danhMuc[2] = Category(3, "Ca ho", "Ca nuoi ngoai troi trong ho");
     int soDanhMuc = 3;
 
-        cout << endl;
-    cout << "========== TAT CA DANH MUC ==========" << endl;
+    cout << endl;
+    cout << "TAT CA DANH MUC:" << endl;
 
     for (int i = 0; i < soDanhMuc; i++) {
         danhMuc[i].displayCategoryInfo();
