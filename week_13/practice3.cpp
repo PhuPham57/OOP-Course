@@ -63,3 +63,38 @@ public:
     void setSoGioLamViec(int g) { soGioLamViec = g; }
     void setDonGia(double dg) { donGia = dg; }
 };
+
+class MonthlyEmployee : public Employee {
+private:
+    double luongCoBan;   // lương cơ bản
+    double phuCap;       // phụ cấp
+    double heSoThuong;   // hệ số thưởng
+public:
+    MonthlyEmployee() : Employee() {
+        luongCoBan = 0;
+        phuCap = 0;
+        heSoThuong = 0;
+    }
+    MonthlyEmployee(string c, string s, string a, double lcb, double pc, double hs)
+        : Employee(c, s, a) {
+        luongCoBan = lcb;
+        phuCap = pc;
+        heSoThuong = hs;
+    }
+
+    void displayInfo() const {
+        Employee::displayInfo();   // gọi hàm lớp cha
+        cout << "Luong co ban: " << luongCoBan << endl;
+        cout << "Phu cap: " << phuCap << endl;
+        cout << "He so thuong: " << heSoThuong << endl;
+        cout << "Luong: " << tinhLuong() << endl;
+    }
+    double tinhLuong() const { return luongCoBan + phuCap + luongCoBan * heSoThuong; }
+
+    double getLuongCoBan() const { return luongCoBan; }
+    double getPhuCap() const { return phuCap; }
+    double getHeSoThuong() const { return heSoThuong; }
+    void setLuongCoBan(double lcb) { luongCoBan = lcb; }
+    void setPhuCap(double pc) { phuCap = pc; }
+    void setHeSoThuong(double hs) { heSoThuong = hs; }
+};
