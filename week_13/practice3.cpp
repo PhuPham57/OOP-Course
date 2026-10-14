@@ -98,3 +98,19 @@ public:
     void setPhuCap(double pc) { phuCap = pc; }
     void setHeSoThuong(double hs) { heSoThuong = hs; }
 };
+
+int main() {
+
+    Employee e1("079123456789", "Nguyen Van A", "Ho Chi Minh");
+    HourlyEmployee h1("079876543210", "Tran Thi B", "Ha Noi", 160, 50000);
+    MonthlyEmployee m1("079987654321", "Le Minh C", "Da Nang", 15000000, 2000000, 1.2);
+
+    cout << "--- Thong tin Employee ---" << endl;
+    e1.displayInfo();
+    cout << "\n--- Thong tin HourlyEmployee ---" << endl;
+    h1.displayInfo();
+    cout << "\n--- Thong tin MonthlyEmployee ---" << endl;
+    m1.displayInfo();
+
+    return 0;
+}
