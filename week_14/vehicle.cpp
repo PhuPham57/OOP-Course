@@ -6,25 +6,25 @@ using namespace std;
 
 class Vehicle {
 private:
-    string id;
+    string ID;
     string brand;
     double pricePerDay;
 
 public:
-    Vehicle() : id(""), brand(""), pricePerDay(0) {}
-    Vehicle(string i, string b, double p) : id(i), brand(b), pricePerDay(p) {}
+    Vehicle() : ID(""), brand(""), pricePerDay(0) {}
+    Vehicle(string i, string b, double p) : ID(i), brand(b), pricePerDay(p) {}
     virtual ~Vehicle() {}
 
-    string getId() const { return id; }
+    string getId() const { return ID; }
     string getBrand() const { return brand; }
     double getPricePerDay() const { return pricePerDay; }
 
-    void setId(string i) { id = i; }
+    void setId(string i) { ID = i; }
     void setBrand(string b) { brand = b; }
     void setPricePerDay(double p) { pricePerDay = p; }
 
     virtual void displayInfo() const {
-        cout << "ID: " << id << endl;
+        cout << "ID: " << ID << endl;
         cout << "Brand: " << brand << endl;
         cout << "Price per day: " << pricePerDay << endl;
     }
