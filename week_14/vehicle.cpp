@@ -1,6 +1,5 @@
 #include <iostream>
 #include <string>
-#include <vector>
 
 using namespace std;
 
@@ -118,25 +117,21 @@ public:
 
 // ================= MAIN =================
 int main() {
-    cout.setf(ios::fixed);
-    cout.precision(0);
+    // cout.setf(ios::fixed);
+    // cout.precision(0);
 
-    vector<Vehicle*> vehicles;
-    vector<int> rentalDays;   // số ngày thuê của từng phương tiện
+    const int N = 5;                 // số lượng phương tiện
+    Vehicle* vehicles[N];            // mảng con trỏ Vehicle
+    int rentalDays[N] = {7, 3, 5, 2, 4};   // số ngày thuê của từng phương tiện
 
-    vehicles.push_back(new Car("C01", "Toyota Vios", 800000, 5));
-    rentalDays.push_back(7);
-    vehicles.push_back(new Car("C02", "Honda City", 900000, 5));
-    rentalDays.push_back(3);
-    vehicles.push_back(new Motorbike("M01", "Honda Wave", 150000, 110));
-    rentalDays.push_back(5);
-    vehicles.push_back(new Motorbike("M02", "Yamaha Exciter", 200000, 150));
-    rentalDays.push_back(2);
-    vehicles.push_back(new Truck("T01", "Hyundai Porter", 1200000, 2.5, 500000));
-    rentalDays.push_back(4);
+    vehicles[0] = new Car("C01", "Toyota Vios", 800000, 5);
+    vehicles[1] = new Car("C02", "Honda City", 900000, 5);
+    vehicles[2] = new Motorbike("M01", "Honda Wave", 150000, 110);
+    vehicles[3] = new Motorbike("M02", "Yamaha Exciter", 200000, 150);
+    vehicles[4] = new Truck("T01", "Hyundai Porter", 1200000, 2.5, 500000);
 
     cout << "===== VEHICLE LIST =====" << endl;
-    for (int i = 0; i < vehicles.size(); i++) {
+    for (int i = 0; i < N; i++) {
         vehicles[i]->displayInfo();
         cout << "Rental days: " << rentalDays[i] << endl;
         cout << "Rental fee: " << vehicles[i]->calculateRentalFee(rentalDays[i]) << endl;
@@ -145,13 +140,13 @@ int main() {
 
     // Tổng doanh thu thuê xe
     double total = 0;
-    for (int i = 0; i < vehicles.size(); i++)
+    for (int i = 0; i < N; i++)
         total += vehicles[i]->calculateRentalFee(rentalDays[i]);
     cout << "Total rental revenue: " << total << endl;
 
     // Phương tiện có phí thuê cao nhất
     int maxIndex = 0;
-    for (int i = 1; i < vehicles.size(); i++)
+    for (int i = 1; i < N; i++)
         if (vehicles[i]->calculateRentalFee(rentalDays[i]) >
             vehicles[maxIndex]->calculateRentalFee(rentalDays[maxIndex]))
             maxIndex = i;
@@ -160,7 +155,7 @@ int main() {
     cout << "Rental fee: " << vehicles[maxIndex]->calculateRentalFee(rentalDays[maxIndex]) << endl;
 
     // Giải phóng bộ nhớ
-    for (int i = 0; i < vehicles.size(); i++)
+    for (int i = 0; i < N; i++)
         delete vehicles[i];
 
     return 0;
